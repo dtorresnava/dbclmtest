@@ -34,7 +34,7 @@ class NaceCsvServiceTest {
     }
 
     @Test
-    void putNadeDetailDataTest() {
+    void setDataFromCsv() {
         Mockito.when(naceReadCsvFile.readNaceCsvFile()).thenReturn(naceList);
         Mockito.when(naceRepository.setNaseDataDetails(naceList)).thenReturn(naceList);
 
