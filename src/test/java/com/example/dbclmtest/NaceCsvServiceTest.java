@@ -1,7 +1,7 @@
 package com.example.dbclmtest;
 
 import com.example.dbclmtest.application.service.NaceCsvServiceImpl;
-import com.example.dbclmtest.data.NaceDataTest;
+import com.example.dbclmtest.data.NaceData;
 import com.example.dbclmtest.domain.csv.NaceReadCsvFile;
 import com.example.dbclmtest.domain.model.Nace;
 import com.example.dbclmtest.domain.repository.NaceRepository;
@@ -29,7 +29,7 @@ class NaceCsvServiceTest {
         MockitoAnnotations.initMocks(this);
         naceCsvService = new NaceCsvServiceImpl(naceReadCsvFile, naceRepository);
 
-        naceList = NaceDataTest.getListNaceDetails(20);
+        naceList = NaceData.getListNaceDetails(20);
 
     }
 

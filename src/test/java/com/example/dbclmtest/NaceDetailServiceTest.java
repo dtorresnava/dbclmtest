@@ -1,7 +1,7 @@
 package com.example.dbclmtest;
 
 import com.example.dbclmtest.application.service.NaceServiceImpl;
-import com.example.dbclmtest.data.NaceDataTest;
+import com.example.dbclmtest.data.NaceData;
 import com.example.dbclmtest.domain.model.Nace;
 import com.example.dbclmtest.domain.repository.NaceRepository;
 import org.junit.jupiter.api.Assertions;
@@ -28,7 +28,7 @@ public class NaceDetailServiceTest {
     @Tag("Get Nace details by order id")
     @Test
     void getAllProductPriceTest() {
-        Nace naceData = NaceDataTest.getNaceDetails(0);
+        Nace naceData = NaceData.getNaceDetails(0);
         Mockito.when(naceRepository.getNaceDetails(398481L)).thenReturn(naceData);
         Nace priceResultList = naceService.getNaceDetails(398481L);
 

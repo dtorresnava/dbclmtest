@@ -5,7 +5,7 @@ import com.example.dbclmtest.domain.model.Nace;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NaceDataTest {
+public class NaceData {
 
     public static List<Nace> getListNaceDetails(Integer size) {
 
