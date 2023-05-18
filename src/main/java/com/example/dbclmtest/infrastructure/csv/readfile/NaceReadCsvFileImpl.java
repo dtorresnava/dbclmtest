@@ -8,6 +8,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class NaceReadCsvFileImpl implements NaceReadCsvFile {
@@ -24,6 +26,7 @@ public class NaceReadCsvFileImpl implements NaceReadCsvFile {
 
     @Override
     public List<Nace> readNaceCsvFile() {
+        log.info("Start reading csv file");
         List<NaceCsvEntity> naceCsvEntityList = new ArrayList<>();
         ColumnPositionMappingStrategy strat = new ColumnPositionMappingStrategy();
         strat.setType(NaceCsvEntity.class);
@@ -40,8 +43,10 @@ public class NaceReadCsvFileImpl implements NaceReadCsvFile {
                 NaceCsvEntity naceCsv = (NaceCsvEntity) object;
                 naceCsvEntityList.add(naceCsv);
             }
+            log.info("Return csv file data into list object");
             return naceCsvEntityList.stream().map(naceCsvMapper::naceToNaceCsvEntity).collect(Collectors.toList());
         } catch (FileNotFoundException e) {
+            log.error("Error reading csv file");
             throw new RuntimeException(e);
         }
 

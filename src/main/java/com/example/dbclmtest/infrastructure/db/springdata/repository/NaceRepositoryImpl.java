@@ -7,6 +7,7 @@ import com.example.dbclmtest.infrastructure.db.springdata.mapper.NaceEntityMappe
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +31,7 @@ public class NaceRepositoryImpl implements NaceRepository {
         return nace.map(naceEntityMapper::naceyToNaceEntity).orElse(null);
     }
 
+    @Transactional
     @Override
     public List<Nace> setNaseDataDetails(List<Nace> naceList) {
         List<NaceEntity> naceEntityList = naceEntityRepository.saveAll(naceList.stream().map(naceEntityMapper::naceEntityToNace).collect(Collectors.toList()));
